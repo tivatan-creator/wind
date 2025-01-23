@@ -63,10 +63,11 @@
       box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     }
     .sidebar a {
-      padding: 10px 15px;
+      padding: 10px;
       text-decoration: none;
       font-size: 1.5rem;
       color: #ff6b6b;
+      text-align: center;
       display: block;
       transition: 0.3s;
     }
@@ -96,15 +97,21 @@
       border: none;
       cursor: pointer;
     }
-    .add-date-btn {
-      margin-top: 20px;
-      padding: 10px 15px;
-      font-size: 1rem;
+    /* 右下角新增按鈕樣式 */
+    .add-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
       background: #ff6b6b;
       color: #fff;
-      border: none;
-      border-radius: 5px;
+      font-size: 2rem;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
       cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
@@ -113,26 +120,25 @@
     <h1>臻與溫的愛之記</h1>
   </header>
 
-  <!-- 新增的左側邊欄功能 -->
+  <!-- 左側邊欄 -->
   <div id="mySidebar" class="sidebar">
     <button class="close-btn" onclick="closeSidebar()">&times;</button>
-    <a href="#anniversaries">紀念日</a>
+    <a href="anniversaries.html">紀念日</a>
   </div>
   <button class="open-btn" onclick="openSidebar()">☰</button>
 
-  <!-- 紀念日內容 -->
-  <div class="content" id="anniversaries">
-    <h2>紀念日</h2>
-    <div id="dateList">
-      <p class="date-item">2025年1月15日 - 我們成為彼此唯一的那天</p>
-    </div>
-    <button class="add-date-btn" onclick="addDate()">新增紀念日</button>
-  </div>
-
+  <!-- 主頁內容 -->
   <div class="content">
     <p>這是一個屬於我們的網站，記錄著我們每一天的故事和愛意。</p>
     <p>臻，無論時光如何流轉，你永遠是我的唯一。</p>
     <a class="button" href="#">點擊這裡，開啟我們的回憶</a>
+  </div>
+
+  <!-- 紀念日隱藏在主頁下方 -->
+  <div class="content" style="margin-top: 100px;">
+    <div id="dateList">
+      <p>2025年1月15日 - 我們成為彼此唯一的那天</p>
+    </div>
   </div>
 
   <footer>
@@ -146,18 +152,6 @@
     }
     function closeSidebar() {
       document.getElementById("mySidebar").style.width = "0";
-    }
-
-    // 新增紀念日
-    function addDate() {
-      const newDate = prompt("請輸入新的紀念日（格式：2025年1月22日 - 我們一起完成一件大事）");
-      if (newDate) {
-        const dateList = document.getElementById("dateList");
-        const newDateItem = document.createElement("p");
-        newDateItem.className = "date-item";
-        newDateItem.textContent = newDate;
-        dateList.appendChild(newDateItem);
-      }
     }
   </script>
 </body>
