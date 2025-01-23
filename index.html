@@ -56,6 +56,21 @@
   <header>
     <h1>臻與溫的愛之記</h1>
   </header>
+
+  <!-- 新增的左側邊欄功能 -->
+  <div id="mySidebar" class="sidebar">
+    <button class="close-btn" onclick="closeSidebar()">&times;</button>
+    <a href="#anniversaries">紀念日</a>
+  </div>
+  <button class="open-btn" onclick="openSidebar()">☰</button>
+  <div class="content" id="anniversaries">
+    <h2>紀念日</h2>
+    <div id="dateList">
+      <p class="date-item">2025年1月15日 - 我們成為彼此唯一的那天</p>
+    </div>
+    <button class="add-date-btn" onclick="addDate()">新增紀念日</button>
+  </div>
+  </header>
   <div class="content">
     <p>這是一個屬於我們的網站，記錄著我們每一天的故事和愛意。</p>
     <p>臻，無論時光如何流轉，你永遠是我的唯一。</p>
