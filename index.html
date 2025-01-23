@@ -50,6 +50,62 @@
       text-align: center;
       color: #666;
     }
+    /* 左側邊欄樣式 */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      overflow-x: hidden;
+      transition: 0.5s;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: #ff6b6b;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      background: #ff6b6b;
+      color: #fff;
+    }
+    .open-btn {
+      font-size: 1.5rem;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #ff6b6b;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #ff6b6b;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .add-date-btn {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      background: #ff6b6b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -63,6 +119,8 @@
     <a href="#anniversaries">紀念日</a>
   </div>
   <button class="open-btn" onclick="openSidebar()">☰</button>
+
+  <!-- 紀念日內容 -->
   <div class="content" id="anniversaries">
     <h2>紀念日</h2>
     <div id="dateList">
@@ -70,14 +128,37 @@
     </div>
     <button class="add-date-btn" onclick="addDate()">新增紀念日</button>
   </div>
-  </header>
+
   <div class="content">
     <p>這是一個屬於我們的網站，記錄著我們每一天的故事和愛意。</p>
     <p>臻，無論時光如何流轉，你永遠是我的唯一。</p>
     <a class="button" href="#">點擊這裡，開啟我們的回憶</a>
   </div>
+
   <footer>
     <p>© 2025 臻與溫的愛. 永不改變的承諾.</p>
   </footer>
+
+  <script>
+    // 打開和關閉側邊欄
+    function openSidebar() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeSidebar() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    // 新增紀念日
+    function addDate() {
+      const newDate = prompt("請輸入新的紀念日（格式：2025年1月22日 - 我們一起完成一件大事）");
+      if (newDate) {
+        const dateList = document.getElementById("dateList");
+        const newDateItem = document.createElement("p");
+        newDateItem.className = "date-item";
+        newDateItem.textContent = newDate;
+        dateList.appendChild(newDateItem);
+      }
+    }
+  </script>
 </body>
 </html>
