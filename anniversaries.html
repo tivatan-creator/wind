@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紀念日 - 臻與溫的愛</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff6b6b;
+    }
+    .content {
+      margin: 20px;
+      text-align: center;
+    }
+    .content p {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .add-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #ff6b6b;
+      color: #fff;
+      font-size: 2rem;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .add-btn:hover {
+      background: #ee5253;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>我們的紀念日</h1>
+  </header>
+  <div class="content" id="dateList">
+    <p>2025年1月15日 - 我們成為彼此唯一的那天</p>
+  </div>
+  <button class="add-btn" onclick="addDate()">+</button>
+  <script>
+    function addDate() {
+      const newDate = prompt("請輸入新的紀念日（格式：2025年1月22日 - 我們一起完成一件大事）");
+      if (newDate) {
+        const dateList = document.getElementById("dateList");
+        const newDateItem = document.createElement("p");
+        newDateItem.textContent = newDate;
+        dateList.appendChild(newDateItem);
+      }
+    }
+  </script>
+</body>
+</html>
