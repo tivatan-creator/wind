@@ -26,10 +26,6 @@
       text-align: center;
       margin: 50px 20px;
     }
-    .content p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-    }
     .button {
       display: inline-block;
       padding: 10px 20px;
@@ -87,6 +83,9 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    .open-btn.hidden {
+      display: none;
+    }
     .sidebar .close-btn {
       position: absolute;
       top: 10px;
@@ -97,7 +96,6 @@
       border: none;
       cursor: pointer;
     }
-    /* 右下角新增按鈕樣式 */
     .add-btn {
       position: fixed;
       bottom: 20px;
@@ -113,6 +111,9 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
+    .add-btn:hover {
+      background: #ee5253;
+    }
   </style>
 </head>
 <body>
@@ -123,22 +124,18 @@
   <!-- 左側邊欄 -->
   <div id="mySidebar" class="sidebar">
     <button class="close-btn" onclick="closeSidebar()">&times;</button>
+    <a href="index.html">主頁</a>
     <a href="anniversaries.html">紀念日</a>
+    <a href="rituals.html">戀愛儀式</a>
+    <a href="profile.html">情侶資料</a>
   </div>
-  <button class="open-btn" onclick="openSidebar()">☰</button>
+  <button class="open-btn" id="menuBtn" onclick="openSidebar()">☰</button>
 
   <!-- 主頁內容 -->
   <div class="content">
     <p>這是一個屬於我們的網站，記錄著我們每一天的故事和愛意。</p>
     <p>臻，無論時光如何流轉，你永遠是我的唯一。</p>
     <a class="button" href="#">點擊這裡，開啟我們的回憶</a>
-  </div>
-
-  <!-- 紀念日隱藏在主頁下方 -->
-  <div class="content" style="margin-top: 100px;">
-    <div id="dateList">
-      <p>2025年1月15日 - 我們成為彼此唯一的那天</p>
-    </div>
   </div>
 
   <footer>
@@ -149,9 +146,11 @@
     // 打開和關閉側邊欄
     function openSidebar() {
       document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("menuBtn").classList.add("hidden");
     }
     function closeSidebar() {
       document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("menuBtn").classList.remove("hidden");
     }
   </script>
 </body>

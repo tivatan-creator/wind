@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戀愛儀式 - 臻與溫的愛</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff6b6b;
+    }
+    .content {
+      margin: 20px;
+      text-align: center;
+    }
+    .content p {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .add-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #ff6b6b;
+      color: #fff;
+      font-size: 2rem;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .add-btn:hover {
+      background: #ee5253;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>我們的戀愛儀式</h1>
+  </header>
+  <div class="content" id="ritualList">
+    <p>2025年1月20日 - 我們第一次一起看日出</p>
+  </div>
+  <button class="add-btn" onclick="addRitual()">+</button>
+  <script>
+    function addRitual() {
+      const newRitual = prompt("請輸入新的戀愛儀式（格式：2025年1月20日 - 一起完成的事）");
+      if (newRitual) {
+        const ritualList = document.getElementById("ritualList");
+        const newRitualItem = document.createElement("p");
+        newRitualItem.textContent = newRitual;
+        ritualList.appendChild(newRitualItem);
+      }
+    }
+  </script>
+</body>
+</html>

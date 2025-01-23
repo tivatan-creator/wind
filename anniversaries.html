@@ -48,6 +48,24 @@
     .add-btn:hover {
       background: #ee5253;
     }
+    .date-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .delete-btn {
+      background: #ee5253;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background: #d43f3f;
+    }
   </style>
 </head>
 <body>
@@ -55,19 +73,56 @@
     <h1>我們的紀念日</h1>
   </header>
   <div class="content" id="dateList">
-    <p>2025年1月15日 - 我們成為彼此唯一的那天</p>
+    <!-- 紀念日列表將由 JavaScript 動態生成 -->
   </div>
-  <button class="add-btn" onclick="addDate()">+</button>
+  <button class="add-btn" onclick="showOptions()">+</button>
+
   <script>
+    // 初始化紀念日數據（從 LocalStorage 加載）
+    const dateList = JSON.parse(localStorage.getItem('anniversaries')) || [];
+
+    // 渲染紀念日列表
+    function renderDates() {
+      const dateListContainer = document.getElementById('dateList');
+      dateListContainer.innerHTML = ''; // 清空舊的列表
+      dateList.forEach((date, index) => {
+        const dateItem = document.createElement('div');
+        dateItem.className = 'date-item';
+        dateItem.innerHTML = `
+          <span>${date}</span>
+          <button class="delete-btn" onclick="deleteDate(${index})">刪除</button>
+        `;
+        dateListContainer.appendChild(dateItem);
+      });
+    }
+
+    // 新增紀念日
     function addDate() {
       const newDate = prompt("請輸入新的紀念日（格式：2025年1月22日 - 我們一起完成一件大事）");
       if (newDate) {
-        const dateList = document.getElementById("dateList");
-        const newDateItem = document.createElement("p");
-        newDateItem.textContent = newDate;
-        dateList.appendChild(newDateItem);
+        dateList.push(newDate);
+        localStorage.setItem('anniversaries', JSON.stringify(dateList));
+        renderDates();
       }
     }
+
+    // 刪除紀念日
+    function deleteDate(index) {
+      dateList.splice(index, 1); // 刪除指定索引的紀念日
+      localStorage.setItem('anniversaries', JSON.stringify(dateList));
+      renderDates();
+    }
+
+    // 彈出選項：新增或刪除
+    function showOptions() {
+      const choice = confirm("點擊 '確定' 新增紀念日，點擊 '取消' 返回");
+      if (choice) {
+        addDate();
+      }
+    }
+
+    // 初次渲染
+    renderDates();
   </script>
 </body>
 </html>
